@@ -19,7 +19,7 @@ class IMDBLoader:
         self.train = dataset["train"].to_pandas().rename(columns={"text": "review"})
         self.test = dataset["test"].to_pandas().rename(columns={"text": "review"})
         
-    def get_sample(self, df, sample_size, random_state=42):
+    def get_sample(self, df, sample_size = 5000, random_state=42):
         return df.sample(n=sample_size, random_state=random_state).reset_index(drop=True)
     
     def get_splits(self):

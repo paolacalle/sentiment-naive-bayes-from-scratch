@@ -18,7 +18,7 @@ def main():
     X_train, y_train, X_test, y_test = data_loader.get_splits()
 
     # Alphas to test (log-spaced)
-    alphas = np.logspace(-3, 0, num=8)  # 0.001 to 1.0
+    alphas = np.arange(0.01, 10, 0.5)
 
     sk_accuracies = []
     custom_raw_accuracies = []
@@ -69,7 +69,6 @@ def main():
     plt.plot(alphas, custom_raw_accuracies, marker="s", label="Custom NB (raw text)")
     plt.plot(alphas, custom_cv_accuracies, marker="^", label="Custom NB + CountVectorizer")
 
-    plt.xscale("log")
     plt.xlabel("Alpha (Laplace smoothing)")
     plt.ylabel("Accuracy")
     plt.title("Effect of Alpha on Naive Bayes Accuracy (IMDB)")
